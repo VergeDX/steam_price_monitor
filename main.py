@@ -22,3 +22,10 @@ if __name__ == '__main__':
         async_list.append(action_item)
 
     grequests.map(async_list)
+
+    for result, game in zip(async_list, monitoring_games):
+        app_data = result.response.json()[str(game.appId)]['data']
+        final_price = app_data['price_overview']['final']
+
+        if final_price <= game.minimal_cent:
+            print('BUY NOW!')
