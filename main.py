@@ -1,6 +1,9 @@
 import urllib.parse
 
+import requests
+
 from game_model import SteamGame
+from proxy_chooser import get_proxies
 
 OneShot: SteamGame = SteamGame("OneShot", 420530, 1800)
 Florence: SteamGame = SteamGame("Florence", 1102130, 1000)
@@ -15,3 +18,6 @@ if __name__ == '__main__':
     for game in monitoring_games:
         params: dict = {'appids': game.appId, 'cc': 'cn', 'filters': 'price_overview'}
         url: str = base_url + urllib.parse.urlencode(params)
+
+        # https://docs.python-requests.org/en/latest/
+        r = requests.get(url, proxies=get_proxies())
