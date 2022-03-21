@@ -2,14 +2,8 @@ import urllib.parse
 
 import requests
 
-from game_model import SteamGame
+from game_list import monitoring_games
 from proxy_chooser import get_proxies
-
-OneShot: SteamGame = SteamGame("OneShot", 420530, 1800)
-Florence: SteamGame = SteamGame("Florence", 1102130, 1000)
-
-# https://stackoverflow.com/questions/2682745/how-do-i-create-a-constant-in-python
-monitoring_games: list[SteamGame] = [OneShot, Florence]
 
 # https://stackoverflow.com/questions/15799696/how-to-build-urls-in-python
 base_url: str = "https://store.steampowered.com/api/appdetails?"
