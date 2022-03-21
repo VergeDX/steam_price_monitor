@@ -1,6 +1,7 @@
 import urllib.parse
 
 import requests
+from requests import Response
 
 from game_list import monitoring_games
 from proxy_chooser import get_proxies
@@ -14,4 +15,4 @@ if __name__ == '__main__':
         url: str = base_url + urllib.parse.urlencode(params)
 
         # https://docs.python-requests.org/en/latest/
-        r = requests.get(url, proxies=get_proxies())
+        r: Response = requests.get(url, proxies=get_proxies())
